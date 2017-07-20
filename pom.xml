@@ -12,8 +12,6 @@
 
     <properties>
         <mysql-connector-java.version>5.1.30</mysql-connector-java.version>
-        <mybatis.version>3.2.7</mybatis.version>
-        <mybatis-spring.version>1.2.2</mybatis-spring.version>
         <jstl.version>1.2</jstl.version>
         <log4j.version>1.2.16</log4j.version>
         <junit.version>4.8.2</junit.version>
@@ -42,9 +40,6 @@
     </properties>
 
     <dependencies>
-
-
-
         <!--<dependency> <groupId>com.alibaba</groupId> <artifactId>druid</artifactId>
             <version>${druid.version}</version> </dependency> -->
 
@@ -73,17 +68,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-connector-java.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>${mybatis.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>${mybatis-spring.version}</version>
-        </dependency>
-
 
         <dependency>
             <groupId>log4j</groupId>
