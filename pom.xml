@@ -36,7 +36,6 @@
         <cglib.version>2.2</cglib.version>
         <!--<druid.version>1.0.6</druid.version> -->
         <c3p0.version>0.9.1.2</c3p0.version>
-        <kaptcha.version>2.3</kaptcha.version>
         <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.1.1</maven-war-plugin.version>
         <maven-resources-plugin.version>2.5</maven-resources-plugin.version>
@@ -53,12 +52,6 @@
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
             <version>${c3p0.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.code.kaptcha</groupId>
-            <artifactId>kaptcha</artifactId>
-            <version>${kaptcha.version}</version>
         </dependency>
 
 
@@ -183,14 +176,6 @@
             <artifactId>httpcore</artifactId>
             <version>${httpcomponents-core.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>cfca.sadk</groupId>
-            <artifactId>SADK</artifactId>
-            <version>3.2.0.8</version>
-        </dependency>
-
-
         <dependency>
             <groupId>com.jfinal</groupId>
             <artifactId>jfinal</artifactId>
