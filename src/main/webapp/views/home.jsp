@@ -20,7 +20,7 @@
         <%@include file="common/menu.jsp" %>
     </div>
     <div class="layout-main">
-        <%--analysis内容写在这边--%>
+        <%--home内容写在这边--%>
     </div>
 </div>
 </body>

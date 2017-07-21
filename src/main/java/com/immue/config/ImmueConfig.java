@@ -1,6 +1,5 @@
 package com.immue.config;
 
-import com.immue.controller.AnalysisController;
 import com.immue.controller.IndexController;
 import com.jfinal.config.*;
 import com.jfinal.template.Engine;
@@ -11,8 +10,9 @@ public class ImmueConfig extends JFinalConfig {
     }
 
     public void configRoute(Routes me) {
-        me.add("/", IndexController.class,"views");
-        me.add("/analysis", AnalysisController.class);
+        me.add("/", IndexController.class, "views");
+//        me.add("/home", HomeController.class, "views");
+//        me.add("/analysis", AnalysisController.class, "views");
     }
 
     public void configEngine(Engine engine) {

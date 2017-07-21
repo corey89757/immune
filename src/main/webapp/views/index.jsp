@@ -1,29 +1,28 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="common/taglib.jsp"%>
-<html lang="zh-hans">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@include file="common/taglib.jsp" %>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>The Aiping Wu Lab</title>
-    <link rel="stylesheet" href="${staticPath}/css/allStyle.css" >
+    <%@include file="common/styles.jsp" %>
 </head>
 <body>
-    <div id="z_menu">
-        <a class="z_menu_main" href="/">Home</a>
-        <a class="z_menu_main" href="/${ctx}/analysis">Analysis</a>
-        <a class="z_menu_main" href="/${ctx}/manual">Manual</a>
-        <a class="z_menu_main" href="/${ctx}/contact">Contact</a>
-        <div class="z_clear"></div>
+<%@include file="common/header.jsp" %>
+<div class="layout">
+    <div class="layout-left">
+        <%@include file="common/menu.jsp" %>
     </div>
+    <div class="layout-main">
+        <button class="btn btn-primary">button</button>
 
-    <div id="z_body">
-        <div id="z_sidebar">
-            <p class="z_sidebar_menu z_sidebar_menu1">
-                <a href="/I-TASSER">&#9679;<span>I-TASSER</span></a>
-                <a href="/QUARK">&#9679;<span>QUARK</span></a>
-                <a href="/LOMETS">&#9679;<span>LOMETS</span></a>
-                <a href="/COACH">&#9679;<span>COACH</span></a>
-            </p>
-        </div>
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
     </div>
+</div>
 </body>
 </html>
