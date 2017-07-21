@@ -1,15 +1,29 @@
-div#z_menu
+body
 {
-    border-left: 1px #A9A9A9 solid;
-    border-right: 1px #A9A9A9 solid;
+    background-color: #f6f6f6;
+    background-image: url(/image/bg.jpg);
+    background-repeat: repeat-x;
+    border-collapse: collapse;
+    color: #000000;
+    font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0px;
+    min-width: 960px;
+    padding: 0px;
+    width: 100%;
+}
+
+div#z_body
+{
+    border: 1px #A9A9A9 solid;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -3px;
-    padding-top: 8px;
-    text-align: center;
+    overflow: hidden;
     width: 90%;
 }
+
 a:link
 {
     color: #000000;
@@ -25,6 +39,24 @@ a:hover
 {
     color: #336699;
     text-decoration: none;
+}
+
+.z_clear
+{
+    clear: both;
+}
+
+div#z_menu
+{
+    border-left: 1px #A9A9A9 solid;
+    border-right: 1px #A9A9A9 solid;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -3px;
+    padding-top: 30px;
+    text-align: center;
+    width: 90%;
 }
 
 div#z_menu a
@@ -65,3 +97,75 @@ div#z_menu a:hover
     color: #FFFFFF;
     font-weight: bold;
 }
+
+div#z_sidebar
+{
+    border-right: 1px #A9A9A9 solid;
+    border-top-right-radius: 6px;
+    display: block;
+    float: left;
+    line-height: 23px; /* height of bars */
+    width: 9em;       /* width of bars */
+    margin-top: 13px;
+}
+
+div#z_sidebar p.z_sidebar_menu
+{
+    margin: 0px;
+    padding-left: 5px;
+    text-align: left;
+    text-decoration: none;
+    font-size: 12px; /* font size of I-TASSER */
+}
+
+div#z_sidebar p.z_sidebar_menu a
+{
+    border-bottom: 1px #797979 solid;
+    border-top: 1px #FFFFFF solid;
+    color: #FFFFFF;
+    display: block;
+    padding-left: 3px;
+    text-decoration: none;
+    white-space: nowrap;
+    height: 23px;   /* height of bars */
+}
+
+div#z_sidebar p.z_sidebar_menu a span
+{
+    color: #336699;
+    left: 0.25em;
+    position: relative;
+}
+
+div#z_sidebar p.z_sidebar_menu a:hover
+{
+    color: #FF4949;
+}
+
+div#z_sidebar p.z_sidebar_menu a:hover span
+{
+    color: #000000;
+}
+
+div#z_sidebar p.z_sidebar_menu1
+{
+    background-color: #999999;
+}
+
+div#z_sidebar p.z_sidebar_menu1 a
+{
+    background-color: #CCCCCC;
+}
+
+div#z_sidebar p.z_sidebar_menu1 a:hover
+{
+    background-color: #999999;
+}
+
+div#z_sidebar p a span.z_narrow
+{
+    font-size: 12px;
+    letter-spacing: -0.5px;
+}
+
+
