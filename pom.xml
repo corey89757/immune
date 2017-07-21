@@ -37,6 +37,8 @@
         <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.1.1</maven-war-plugin.version>
         <maven-resources-plugin.version>2.5</maven-resources-plugin.version>
+        <main.basedir>${basedir}</main.basedir>
+        <maven-copy-plugin.version>0.2.5</maven-copy-plugin.version>
     </properties>
 
     <dependencies>
@@ -166,5 +168,102 @@
             <version>3.1</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>immune</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.github.goldin</groupId>
+                <artifactId>copy-maven-plugin</artifactId>
+                <version>${maven-copy-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources-context</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <file>${main.basedir}/config/log4j.properties</file>
+                                    <targetPath>${project.basedir}/target/classes</targetPath>
+                                    <destFileName>log4j.properties</destFileName>
+                                    <filtering>true</filtering>
+                                    <failIfNotFound>true</failIfNotFound>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-test-resources-context</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <file>${main.basedir}/config/log4j.properties</file>
+                                    <targetPath>${project.basedir}/target/test-classes</targetPath>
+                                    <destFileName>log4j.properties</destFileName>
+                                    <filtering>true</filtering>
+                                    <failIfNotFound>true</failIfNotFound>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <!-- or if you want to use tomcat 6.x <artifactId>tomcat6-maven-plugin</artifactId> -->
+                <version>2.2</version>
+                <configuration>
+                    <port>8081</port>
+                    <uriEncoding>UTF-8</uriEncoding>
+                    <path>/did</path>
+                    <useTestClasspath>false</useTestClasspath>
+                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                    <additionalClasspathDirs>
+                        <additionalClasspathDir />
+                    </additionalClasspathDirs>
+                </configuration>
+
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
