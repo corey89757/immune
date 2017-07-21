@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <ul class="menu">
     <li class="menu-item">
-        <a href="/home">
+        <a href="${ctx}/home">
             Home
         </a>
     </li>
     <li class="menu-item">
-        <a href="/analysis">
+        <a href="${ctx}/analysis">
             Analysis
         </a>
     </li>

@@ -11,8 +11,6 @@ public class ImmueConfig extends JFinalConfig {
 
     public void configRoute(Routes me) {
         me.add("/", IndexController.class, "views");
-//        me.add("/home", HomeController.class, "views");
-//        me.add("/analysis", AnalysisController.class, "views");
     }
 
     public void configEngine(Engine engine) {

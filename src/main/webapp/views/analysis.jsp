@@ -1,11 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 0
-  Date: 2017/7/21
-  Time: 16:01
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="common/taglib.jsp" %>
 <html lang="en">
 <head>
@@ -21,6 +14,7 @@
     </div>
     <div class="layout-main">
         <%--analysis内容写在这边--%>
+        analysis
     </div>
 </div>
 </body>
