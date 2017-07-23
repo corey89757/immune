@@ -13,8 +13,8 @@
         <%@include file="common/menu.jsp" %>
     </div>
     <div class="layout-main">
-        <%--home内容写在这边--%>
-        home
+        <%--manual内容写在这边--%>
+            manual
     </div>
 </div>
 </body>

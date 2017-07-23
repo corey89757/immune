@@ -8,13 +8,12 @@ public class IndexController extends Controller {
         renderJsp("index.jsp");
     }
 
-    public void home(){
-        System.out.printf("home...........");
-        renderJsp("home.jsp");
-    }
-
     public void analysis(){
         System.out.printf("analysis...........");
         renderJsp("analysis.jsp");
+    }
+    public void manual(){
+        System.out.printf("manual...........");
+        renderJsp("manual.jsp");
     }
 }
