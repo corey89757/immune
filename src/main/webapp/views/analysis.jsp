@@ -19,8 +19,8 @@
                 <div class="col-sm-10">
                     <div class="btn-group">
                         <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu1"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="btn-group">
                         <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle subMenu" type="button" id="dropdownMenu2"
+                            <button class="btn btn-warning dropdown-toggle subMenu" type="button" id="dropdownMenu2"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 Please choose...
                                 <span class="caret"></span>
@@ -43,12 +43,12 @@
                     </div>
                     <div class="btn-group">
                         <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle subMenu" type="button" id="dropdownMenu3"
+                            <button class="btn btn-warning dropdown-toggle subMenu" type="button" id="dropdownMenu3"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 Please choose...
                                 <span class="caret"></span>
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
                                 <li><a href="#">Agilent Whole Mouse Genome Microarray 4x44K v2</a></li>
                                 <li><a href="#">Illumina MouseWG-6 v2.0 expression beadchip</a></li>
                             </ul>
@@ -58,7 +58,7 @@
             </div>
 
             <div class="form-group">
-                <label for="methodSelect" class="col-sm-2 control-label">Method</label>
+                <label for="methodSelect" class="col-sm-2 control-label ">Method</label>
                 <div class="col-sm-10">
                     <label class="radio-inline">
                         <input type="radio" name="inlineRadioOptions" id="inlineSVR" value="SVR"> SVR
@@ -71,19 +71,19 @@
             </div>
             <div class="form-group">
                 <label for="inputJobname" class="col-sm-2 control-label">Job Name</label>
-                <div class="col-sm-10">
+                <div class="col-sm-4">
                     <input type="text" class="form-control" id="inputJobname" placeholder="Job Name">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputFile" class="col-sm-2 control-label">File Upload</label>
-                <div class="col-sm-10">
-                    <input type="file" placeholder="you have not yet selected any files">
+                <div class="col-sm-5">
+                    <input type="file" class="btn-warning">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default active">Submit</button>
+                    <button type="submit" class="btn btn-warning active">Run</button>
                 </div>
             </div>
         </form>

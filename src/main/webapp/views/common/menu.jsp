@@ -11,8 +11,8 @@
         </a>
     </li>
     <li class="menu-item">
-        <a href="${ctx}/manual>
-            Manual
+        <a href="${ctx}/result">
+            result
         </a>
     </li>
     <li class="menu-item">
