@@ -76,8 +76,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputFile" class="col-sm-2 control-label">File Upload</label>
-                <div class="col-sm-5">
+                <label class="col-sm-2 control-label">File Upload</label>
+                <div class="col-sm-10">
                     <input type="file" class="btn-warning">
                 </div>
             </div>
