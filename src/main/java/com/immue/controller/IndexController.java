@@ -1,8 +1,10 @@
 package com.immue.controller;
 
 import com.jfinal.core.Controller;
+import com.jfinal.upload.UploadFile;
 import net.sf.json.JSONObject;
 
+import java.io.File;
 import java.util.UUID;
 
 public class IndexController extends Controller {
@@ -28,12 +30,29 @@ public class IndexController extends Controller {
 
 
     public void process() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        System.out.println("process.........");
         //接收参数
+        UploadFile uploadFile = getFile("file");
+        String type = getPara("type");
+        String subType = getPara("subType");
+        String method = getPara("method");
+        String jobName = getPara("jobName");
 
+        File file = uploadFile.getFile();
+
+        System.out.println("[process] type : " + type
+                + "\nsunType : " + subType
+                + "\nmethod : " + method
+                + "\njobName : " + jobName
+                + "\nfile : " + file.getName());
 
         //处理
+        
 
 
         //返回
