@@ -1,5 +1,6 @@
 package com.immue.controller;
 
+import com.immue.util.RUtil;
 import com.jfinal.core.Controller;
 import com.jfinal.upload.UploadFile;
 import net.sf.json.JSONObject;
@@ -44,6 +45,7 @@ public class IndexController extends Controller {
         String jobName = getPara("jobName");
 
         File file = uploadFile.getFile();
+        //TODO
 
         System.out.println("[process] type : " + type
                 + "\nsunType : " + subType
@@ -52,8 +54,7 @@ public class IndexController extends Controller {
                 + "\nfile : " + file.getName());
 
         //处理
-        
-
+        RUtil.callRMethod();
 
         //返回
         JSONObject jsonObject = new JSONObject();

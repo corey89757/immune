@@ -39,6 +39,7 @@
         <maven-resources-plugin.version>2.5</maven-resources-plugin.version>
         <main.basedir>${basedir}</main.basedir>
         <maven-copy-plugin.version>0.2.5</maven-copy-plugin.version>
+        <rjava.version>0.9-7</rjava.version>
     </properties>
 
     <dependencies>
@@ -299,6 +300,24 @@
             <artifactId>cos-progress</artifactId>
             <version>1.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.lucarosellini.rJava</groupId>
+            <artifactId>JRIEngine</artifactId>
+            <version>${rjava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.lucarosellini.rJava</groupId>
+            <artifactId>REngine</artifactId>
+            <version>${rjava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.lucarosellini.rJava</groupId>
+            <artifactId>JRI</artifactId>
+            <version>${rjava.version}</version>
+        </dependency>
+
+
 
     </dependencies>
 
