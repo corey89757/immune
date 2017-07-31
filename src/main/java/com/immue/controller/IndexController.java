@@ -1,11 +1,13 @@
 package com.immue.controller;
 
+import com.immue.util.FileUtil;
 import com.immue.util.RUtil;
 import com.jfinal.core.Controller;
 import com.jfinal.upload.UploadFile;
 import net.sf.json.JSONObject;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.UUID;
 
 public class IndexController extends Controller {
@@ -32,7 +34,7 @@ public class IndexController extends Controller {
 
     public void process() {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -43,15 +45,27 @@ public class IndexController extends Controller {
         String subType = getPara("subType");
         String method = getPara("method");
         String jobName = getPara("jobName");
-
         File file = uploadFile.getFile();
-        //TODO
 
         System.out.println("[process] type : " + type
                 + "\nsunType : " + subType
                 + "\nmethod : " + method
                 + "\njobName : " + jobName
                 + "\nfile : " + file.getName());
+
+        //保存文件到immue_home/[jobName+UUID]/jobName+UUID,后期R语言的输出结果也可以保存在immue_home/[jobName+UUID] 文件夹中
+        try {
+            File t = new File(FileUtil.makeFilePath(jobName));
+            try {
+                t.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            FileUtil.fileChannelCopy(file, t);
+            file.delete();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         //处理
         RUtil.callRMethod();
