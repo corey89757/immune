@@ -2,10 +2,7 @@ package com.immue.util;
 
 import org.apache.log4j.Logger;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.channels.FileChannel;
 import java.util.UUID;
 
@@ -20,11 +17,14 @@ public class FileUtil {
     private static String configHome = System.getenv("immune_home");
 
     public static String makeFilePath(String jobName) {
-        String fileName = jobName + "_" + UUID.randomUUID().toString().replaceAll("-", "");
-        String folderPath = configHome + File.separator + fileName;
+        //String fileName = jobName + "_" + UUID.randomUUID().toString().replaceAll("-", "");
+        String fileName = jobName;
+        //System.out.println("configHome:"+configHome);
+        String folderPath = configHome + File.separator + "output" + File.separator + fileName;
+        //System.out.println("folderPath:"+folderPath);
         createDir(folderPath);
 
-        String path = folderPath + File.separator + fileName + ".txt";
+        String path = folderPath + File.separator + "qxf.array.expression.csv";
         logger.info("[FileUtil][makeFilePath] path : " + path);
         return path;
     }
@@ -71,11 +71,34 @@ public class FileUtil {
             destDirName = destDirName + File.separator;
         }
         if (dir.mkdirs()) {// 创建目标目录
-            logger.error("[FileUtil][createDir] new dict success : " + destDirName);
+            logger.info("[FileUtil][createDir] new dict success : " + destDirName);
             return true;
         } else {
             logger.error("[FileUtil][createDir] new dict failed");
             return false;
         }
+    }
+
+    public static void readTxtFile(String filePath){
+        try {
+            String encoding="UTF-8";
+            File file=new File(filePath);
+            if(file.isFile() && file.exists()){ //判断文件是否存在
+                InputStreamReader read = new InputStreamReader(
+                        new FileInputStream(file),encoding);//考虑到编码格式
+                BufferedReader bufferedReader = new BufferedReader(read);
+                String lineTxt = null;
+                while((lineTxt = bufferedReader.readLine()) != null){
+                    System.out.println(lineTxt);
+                }
+                read.close();
+            }else{
+                System.out.println("找不到指定的文件");
+            }
+        } catch (Exception e) {
+            System.out.println("读取文件内容出错");
+            e.printStackTrace();
+        }
+
     }
 }

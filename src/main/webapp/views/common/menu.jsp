@@ -12,11 +12,16 @@
     </li>
     <li class="menu-item">
         <a href="${ctx}/result">
-            result
+            Result
         </a>
     </li>
     <li class="menu-item">
-        <a>
+        <a href="${ctx}/manual">
+            Manual
+        </a>
+    </li>
+    <li class="menu-item">
+        <a href="${ctx}/contact">
             Contact
         </a>
     </li>

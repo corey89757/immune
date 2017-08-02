@@ -5,12 +5,47 @@ import org.rosuda.JRI.RList;
 import org.rosuda.JRI.RVector;
 import org.rosuda.JRI.Rengine;
 
+import java.io.*;
 import java.util.Arrays;
 
 public class RUtil {
 
-    public static void doRImmune(String x,String y){
-        
+    public static String configHome = System.getenv("immune_home");
+    private static String RHome = System.getenv("R_HOME");
+
+    public static void doRImmune (String type, String subType, String method, String jobName) {
+
+        String immuneRScriptDir = configHome + File.separator + "Rscript";
+        // R文件全路径
+        String immuneRScriptFile = immuneRScriptDir + File.separator + "main.R";
+        String RScriptPath = RHome + File.separator + "bin" + File.separator + "Rscript.exe";
+        String workHome = configHome + File.separator + "output" + File.separator + jobName;
+        String inputFile = workHome + File.separator + "qxf.array.expression.csv";
+        String outputName = "result";
+        String[] cmd = {
+                RScriptPath,
+                "D:/WebTest/Rscript/main.R",
+                type,
+                subType,
+                method,
+                inputFile,
+                workHome,
+                outputName,
+                immuneRScriptDir
+        };
+
+
+        try{
+            Process process = Runtime.getRuntime().exec(cmd);
+            //Process process = Runtime.getRuntime().exec(cmd);
+            // 等待解析类初始化完毕
+            int value = process.waitFor();
+
+            System.out.println(value);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.err.println("R文件执行完毕");
     }
 
     public static void callRMethod() {

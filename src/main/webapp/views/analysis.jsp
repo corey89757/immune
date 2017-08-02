@@ -31,7 +31,7 @@
         <form action="${ctx}/process" method="post" class="form-horizontal js-submit-form" onsubmit="return false"
               enctype="multipart/form-data">
             <input type="hidden" name="type" value="Microarray">
-            <input type="hidden" name="subType" value="Affymetric mouse 430 2.0">
+            <input type="hidden" name="subType" value="">
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Platform</label>
@@ -55,6 +55,8 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                             <li><a href="#">Affymetric mouse 430 2.0</a></li>
+                            <li><a href="#">Agilent Whole Mouse Genome Microarray 4x44K v2</a></li>
+                            <li><a href="#">Illumina MouseWG-6 v2.0 expression beadchip</a></li>
                         </ul>
                     </div>
                     <div class="dropdown sub-dropdown js-dropdown-2 hide">
@@ -178,14 +180,24 @@
         $(".js-submit-form").submit(function () {
             var isValid = true, errorMsg = "";
 
+            //todo:这里可以做表单验证
             if (!$("[name='subType']").val()) {
                 isValid = false;
-                errorMsg += "<span class='text-warning'>error1</span><br/>"
+                errorMsg += "<span class='text-warning'>Please choose a type of Platform</span><br/>"
             }
-            //todo:这里可以做表单验证
+
+            if (!$("[name='jobName']").val()) {
+                isValid = false;
+                errorMsg += "<span class='text-warning'>Please fill out the Job Name</span><br/>"
+            }
+
+            if (!$("[name='file']").val()) {
+                isValid = false;
+                errorMsg += "<span class='text-warning'>Please upload your file</span><br/>"
+            }
 
             if (isValid === false) {
-                alertTip("Has some errors!", errorMsg);
+                alertTip("Errors!", errorMsg);
                 return
             }
 

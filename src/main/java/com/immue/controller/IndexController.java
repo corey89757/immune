@@ -23,6 +23,8 @@ public class IndexController extends Controller {
 
     public void result() {
         System.out.printf("result...........");
+        String pId = getPara("pId");
+        System.out.println("[result] pId : " + pId);
         renderJsp("result.jsp");
     }
 
@@ -32,7 +34,7 @@ public class IndexController extends Controller {
     }
 
 
-    public void process() {
+    public void process() throws IOException, InterruptedException {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -54,8 +56,11 @@ public class IndexController extends Controller {
                 + "\nfile : " + file.getName());
 
         //保存文件到immue_home/[jobName+UUID]/jobName+UUID,后期R语言的输出结果也可以保存在immue_home/[jobName+UUID] 文件夹中
+
+        String pId = UUID.randomUUID().toString().replaceAll("-", "");
+        System.out.println("[process] pId:" + pId);
         try {
-            File t = new File(FileUtil.makeFilePath(jobName));
+            File t = new File(FileUtil.makeFilePath(jobName + pId));
             try {
                 t.createNewFile();
             } catch (IOException e) {
@@ -68,11 +73,13 @@ public class IndexController extends Controller {
         }
 
         //处理
-        RUtil.callRMethod();
+        //RUtil.callRMethod();
+        RUtil.doRImmune(type, subType, method, jobName + pId);
 
         //返回
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("pId", UUID.randomUUID().toString());
+        //jsonObject.put("pId", UUID.randomUUID().toString());
+        jsonObject.put("pId", jobName + pId);
         renderJson(jsonObject);
     }
 
