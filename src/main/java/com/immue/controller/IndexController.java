@@ -4,6 +4,7 @@ import com.immue.util.FileUtil;
 import com.immue.util.RUtil;
 import com.jfinal.core.Controller;
 import com.jfinal.upload.UploadFile;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import java.io.File;
@@ -25,6 +26,24 @@ public class IndexController extends Controller {
         System.out.printf("result...........");
         String pId = getPara("pId");
         System.out.println("[result] pId : " + pId);
+
+        String workHome = RUtil.configHome + File.separator + "output" + File.separator + pId;
+
+        String txtFile = workHome + File.separator + "result.svr" + ".txt";
+        String csvFile = workHome + File.separator + "result.svr" + ".csv";
+        String jpegFile = workHome + File.separator + "Bar plot of resultusingsvr" + ".jpeg";
+        String pdfFile = workHome + File.separator + "Bar plot of resultusingsvr" + ".pdf";
+
+        System.out.println("[result] txtFile : " + txtFile +
+                "\ncsvFile : " + csvFile +
+                "\njpegFile : " + jpegFile +
+                "\npdfFile : " + pdfFile);
+        JSONArray formData = FileUtil.readTxtFileToJSONArray(txtFile);
+        System.out.println(formData);
+        setAttr("formData", formData);
+        setAttr("csvFile", csvFile);
+        setAttr("jpegFile", jpegFile);
+        setAttr("pdfFile", pdfFile);
         renderJsp("result.jsp");
     }
 

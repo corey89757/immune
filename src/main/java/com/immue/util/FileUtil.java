@@ -1,10 +1,13 @@
 package com.immue.util;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jian.wu on 7/31/17.
@@ -79,26 +82,45 @@ public class FileUtil {
         }
     }
 
-    public static void readTxtFile(String filePath){
+    public static JSONArray readTxtFileToJSONArray(String filePath) {
         try {
-            String encoding="UTF-8";
-            File file=new File(filePath);
-            if(file.isFile() && file.exists()){ //判断文件是否存在
+            JSONArray result = new JSONArray();
+            List<String> titleList = new ArrayList<String>();
+            titleList.add("");
+            String encoding = "UTF-8";
+            File file = new File(filePath);
+            if (file.isFile() && file.exists()) { //判断文件是否存在
                 InputStreamReader read = new InputStreamReader(
-                        new FileInputStream(file),encoding);//考虑到编码格式
+                        new FileInputStream(file), encoding);//考虑到编码格式
                 BufferedReader bufferedReader = new BufferedReader(read);
                 String lineTxt = null;
-                while((lineTxt = bufferedReader.readLine()) != null){
+                String[] lineTxtArray = null;
+                while ((lineTxt = bufferedReader.readLine()) != null) {
                     System.out.println(lineTxt);
+                    lineTxtArray = lineTxt.split("\\s");
+                    if (titleList.size() == 1) {//获取标题的值
+                        for (String title : lineTxtArray) {
+                            titleList.add(title);
+                        }
+                        continue;
+                    }
+                    //非标题列
+                    JSONObject resultItem = new JSONObject();
+                    for (int i = 0, totalCount = lineTxtArray.length; i < totalCount; i++) {
+                        resultItem.put(titleList.get(i), lineTxtArray[i]);
+                    }
+                    result.add(resultItem);
                 }
                 read.close();
-            }else{
+                return result;
+            } else {
                 System.out.println("找不到指定的文件");
+                return null;
             }
         } catch (Exception e) {
             System.out.println("读取文件内容出错");
             e.printStackTrace();
+            return null;
         }
-
     }
 }

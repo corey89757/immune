@@ -5,7 +5,7 @@ import org.rosuda.JRI.RList;
 import org.rosuda.JRI.RVector;
 import org.rosuda.JRI.Rengine;
 
-import java.io.*;
+import java.io.File;
 import java.util.Arrays;
 
 public class RUtil {
@@ -13,13 +13,13 @@ public class RUtil {
     public static String configHome = System.getenv("immune_home");
     private static String RHome = System.getenv("R_HOME");
 
-    public static void doRImmune (String type, String subType, String method, String jobName) {
+    public static void doRImmune (String type, String subType, String method, String pId) {
 
         String immuneRScriptDir = configHome + File.separator + "Rscript";
         // R文件全路径
         String immuneRScriptFile = immuneRScriptDir + File.separator + "main.R";
         String RScriptPath = RHome + File.separator + "bin" + File.separator + "Rscript.exe";
-        String workHome = configHome + File.separator + "output" + File.separator + jobName;
+        String workHome = configHome + File.separator + "output" + File.separator + pId;
         String inputFile = workHome + File.separator + "qxf.array.expression.csv";
         String outputName = "result";
         String[] cmd = {
