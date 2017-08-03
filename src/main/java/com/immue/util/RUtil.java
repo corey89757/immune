@@ -5,7 +5,7 @@ import org.rosuda.JRI.RList;
 import org.rosuda.JRI.RVector;
 import org.rosuda.JRI.Rengine;
 
-import java.io.File;
+import java.io.*;
 import java.util.Arrays;
 
 public class RUtil {
@@ -24,7 +24,7 @@ public class RUtil {
         String outputName = "result";
         String[] cmd = {
                 RScriptPath,
-                "D:/WebTest/Rscript/main.R",
+                immuneRScriptFile,
                 type,
                 subType,
                 method,
@@ -37,15 +37,38 @@ public class RUtil {
 
         try{
             Process process = Runtime.getRuntime().exec(cmd);
-            //Process process = Runtime.getRuntime().exec(cmd);
+
+            //避免标准输出导致JAVA挂住
+            printMessage(process.getInputStream());
+            printMessage(process.getErrorStream());
+
             // 等待解析类初始化完毕
             int value = process.waitFor();
-
             System.out.println(value);
+            //byte[] bytes = new byte[process.getInputStream().available()];
+            //process.getInputStream().read(bytes);
+            //System.out.println(new String(bytes));
         } catch (Exception e) {
             e.printStackTrace();
         }
         System.err.println("R文件执行完毕");
+    }
+
+    private static void printMessage(final InputStream input) {
+        new Thread(new Runnable() {
+            public void run() {
+                Reader reader = new InputStreamReader(input);
+                BufferedReader bf = new BufferedReader(reader);
+                String line = null;
+                try {
+                    while((line=bf.readLine())!=null) {
+                        System.out.println(line);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     public static void callRMethod() {
@@ -131,7 +154,7 @@ public class RUtil {
         engine.stop();
     }
 
-    public static void main(String[] args) {
-        RUtil.callRMethod();
-    }
+    //public static void main(String[] args) {
+    //    RUtil.callRMethod();
+    //}
 }

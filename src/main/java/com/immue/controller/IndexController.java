@@ -26,13 +26,28 @@ public class IndexController extends Controller {
         System.out.printf("result...........");
         String pId = getPara("pId");
         System.out.println("[result] pId : " + pId);
+        String method = getPara("method");
+        System.out.println("[result] method : " + method);
 
         String workHome = RUtil.configHome + File.separator + "output" + File.separator + pId;
 
-        String txtFile = workHome + File.separator + "result.svr" + ".txt";
-        String csvFile = pId + File.separator + "result.svr" + ".csv";
-        String jpegFile = pId + File.separator + "Bar plot of resultusingsvr" + ".jpeg";
-        String pdfFile = pId + File.separator + "Bar plot of resultusingsvr" + ".pdf";
+        String txtFile = null;
+        String csvFile = null;
+        String jpegFile = null;
+        String pdfFile = null;
+
+        if (method.equals("SVR")){
+            txtFile = workHome + File.separator + "result.svr" + ".txt";
+            csvFile = workHome + File.separator + "result.svr" + ".csv";
+            jpegFile = workHome + File.separator + "Bar plot of resultusingsvr" + ".jpeg";
+            pdfFile = workHome + File.separator + "Bar plot of resultusingsvr" + ".pdf";
+        }
+        else if (method.equals("LLSR")){
+            txtFile = workHome + File.separator + "result.llsr" + ".txt";
+            csvFile = workHome + File.separator + "result.llsr" + ".csv";
+            jpegFile = workHome + File.separator + "Bar plot of resultusingllsr" + ".jpeg";
+            pdfFile = workHome + File.separator + "Bar plot of resultusingllsr" + ".pdf";
+        }
 
         System.out.println("[result] txtFile : " + txtFile +
                 "\ncsvFile : " + csvFile +
@@ -112,5 +127,4 @@ public class IndexController extends Controller {
         jsonObject.put("method", method);
         renderJson(jsonObject);
     }
-
 }

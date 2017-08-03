@@ -44,7 +44,7 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="#" data-target="js-dropdown-1">Microarray</a></li>
-                            <li><a href="#" data-target="js-dropdown-2">RNA-seq</a></li>
+                            <li><a href="#" data-target="js-dropdown-2">RNASeq</a></li>
                         </ul>
                     </div>
                     <div class="dropdown sub-dropdown js-dropdown-1">
@@ -66,8 +66,7 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-                            <li><a href="#">Agilent Whole Mouse Genome Microarray 4x44K v2</a></li>
-                            <li><a href="#">Illumina MouseWG-6 v2.0 expression beadchip</a></li>
+                            <li><a href="#">illumina</a></li>
                         </ul>
                     </div>
                 </div>
