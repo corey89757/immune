@@ -38,15 +38,15 @@ public class IndexController extends Controller {
 
         if (method.equals("SVR")){
             txtFile = workHome + File.separator + "result.svr" + ".txt";
-            csvFile = workHome + File.separator + "result.svr" + ".csv";
-            jpegFile = workHome + File.separator + "Bar plot of resultusingsvr" + ".jpeg";
-            pdfFile = workHome + File.separator + "Bar plot of resultusingsvr" + ".pdf";
+            csvFile = pId + File.separator + "result.svr" + ".csv";
+            jpegFile = pId + File.separator + "Bar plot of resultusingsvr" + ".jpeg";
+            pdfFile = pId + File.separator + "Bar plot of resultusingsvr" + ".pdf";
         }
         else if (method.equals("LLSR")){
             txtFile = workHome + File.separator + "result.llsr" + ".txt";
-            csvFile = workHome + File.separator + "result.llsr" + ".csv";
-            jpegFile = workHome + File.separator + "Bar plot of resultusingllsr" + ".jpeg";
-            pdfFile = workHome + File.separator + "Bar plot of resultusingllsr" + ".pdf";
+            csvFile = pId + File.separator + "result.llsr" + ".csv";
+            jpegFile = pId + File.separator + "Bar plot of resultusingllsr" + ".jpeg";
+            pdfFile = pId + File.separator + "Bar plot of resultusingllsr" + ".pdf";
         }
 
         System.out.println("[result] txtFile : " + txtFile +
@@ -54,7 +54,11 @@ public class IndexController extends Controller {
                 "\njpegFile : " + jpegFile +
                 "\npdfFile : " + pdfFile);
         JSONArray formData = FileUtil.readTxtFileToJSONArray(txtFile);
-        txtFile = pId + File.separator + "result.svr" + ".txt";
+        if (method.equals("SVR")) {
+            txtFile = pId + File.separator + "result.svr" + ".txt";
+        }else if(method.equals("LLSR")){
+            txtFile = pId + File.separator + "result.llsr" + ".txt";
+        }
         System.out.println(formData);
         setAttr("formData", formData);
         setAttr("txtFile", txtFile);
