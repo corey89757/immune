@@ -99,6 +99,7 @@ public class IndexController extends Controller {
         JSONObject jsonObject = new JSONObject();
         //jsonObject.put("pId", UUID.randomUUID().toString());
         jsonObject.put("pId", jobName + pId);
+        jsonObject.put("method", method);
         renderJson(jsonObject);
     }
 

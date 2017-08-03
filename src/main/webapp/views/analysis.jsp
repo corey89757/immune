@@ -206,7 +206,7 @@
             $(".js-submit-form").ajaxSubmit({//TODO 需要引入jquery 表单提交控件
                 success: function (resp) {
                     //todo:关闭loding状态，页面跳转到结果页
-                    location.assign("${ctx}/result?pId=" + resp.pId);
+                    location.assign("${ctx}/result?pId=" + resp.pId + "&method=" + resp.method);
                 },
                 error: function () {
 
