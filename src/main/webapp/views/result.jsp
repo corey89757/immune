@@ -13,513 +13,29 @@
         <%@include file="common/menu.jsp" %>
     </div>
     <div class="layout-main">
-        <div class="form-group">
-            <h2>Result Table</h2>
-            <div class="col-md-12 ">
-                <div class="container-fluid">
+            <div class="container-fluid">
+                <h2>Result Table</h2>
+                <%--<div class="">--%>
                     <div class="row-fluid">
                         <!--<div style="position:absolute; height:200px; overflow:auto"></div>   overflow-y:hidden-->
                         <div class="table-responsive pre-scrollable" ><!--row pre-scrollable-->
                             <table class="table  table-striped table-bordered table-hover table-condensed datatable">
                                 <thead>
                                 <tr>
-                                    <th></th>
-                                    <th>B.Cells</th>
-                                    <th>CD4.T.Cells</th>
-                                    <th>CD8.T.Cells</th>
-                                    <th>Dendritic.Cells</th>
-                                    <th>Eosinophils</th>
-                                    <th>Macrophages</th>
-                                    <th>Mast.Cells</th>
-                                    <th>Monocytes</th>
-                                    <th>Neutrophils</th>
-                                    <th>NK.Cells</th>
-                                    <th>P-value</th>
-                                    <th>Correlation</th>
-                                    <th>RMSE</th>
+                                    <c:forEach items="${formData[0]}" var="cell">
+                                        <th>${cell.key}</th>
+                                    </c:forEach>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th>BM.1</th>
-                                    <td>31.7676</td>
-                                    <td>0</td>
-                                    <td>6.8586</td>
-                                    <td>0</td>
-                                    <td>11.5754</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>1.6634</td>
-                                    <td>42.6482</td>
-                                    <td>5.4868</td>
-                                    <td>0</td>
-                                    <td>0.892969</td>
-                                    <td>0.515758</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.2</th>
-                                    <td>32.0994</td>
-                                    <td>0.8944</td>
-                                    <td>2.7405</td>
-                                    <td>0</td>
-                                    <td>10.1716</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>4.9991</td>
-                                    <td>43.1387</td>
-                                    <td>5.9564</td>
-                                    <td>0</td>
-                                    <td>0.927958282</td>
-                                    <td>0.459841189</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.3</th>
-                                    <td>26.1742</td>
-                                    <td>4.4855</td>
-                                    <td> 0</td>
-                                    <td>0.992</td>
-                                    <td>15.3574</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>7.2895</td>
-                                    <td>38.3382</td>
-                                    <td>7.3631</td>
-                                    <td>0</td>
-                                    <td>0.917507006</td>
-                                    <td>0.467215592</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.1</th>
-                                    <td>1.0533</td>
-                                    <td>36.467</td>
-                                    <td>19.9978</td>
-                                    <td>1.7658</td>
-                                    <td>0</td>
-                                    <td>23.554</td>
-                                    <td>3.3243</td>
-                                    <td>10.099</td>
-                                    <td>3.7387</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.720797709</td>
-                                    <td>0.693614557</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.2</th>
-                                    <td>0</td>
-                                    <td>34.5292</td>
-                                    <td>16.795</td>
-                                    <td>3.5039</td>
-                                    <td>0</td>
-                                    <td>10.0887</td>
-                                    <td>6.8394</td>
-                                    <td>13.9449</td>
-                                    <td>14.2989</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.625072973</td>
-                                    <td>0.779358123</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.3</th>
-                                    <td>0</td>
-                                    <td>31.142</td>
-                                    <td>10.6081</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>32.1433</td>
-                                    <td>6.239</td>
-                                    <td>15.8853</td>
-                                    <td>3.9822</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.683137042</td>
-                                    <td>0.733327847</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.1</th>
-                                    <td>31.7676</td>
-                                    <td>0</td>
-                                    <td>6.8586</td>
-                                    <td>0</td>
-                                    <td>11.5754</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>1.6634</td>
-                                    <td>42.6482</td>
-                                    <td>5.4868</td>
-                                    <td>0</td>
-                                    <td>0.892969</td>
-                                    <td>0.515758</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.2</th>
-                                    <td>32.0994</td>
-                                    <td>0.8944</td>
-                                    <td>2.7405</td>
-                                    <td>0</td>
-                                    <td>10.1716</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>4.9991</td>
-                                    <td>43.1387</td>
-                                    <td>5.9564</td>
-                                    <td>0</td>
-                                    <td>0.927958282</td>
-                                    <td>0.459841189</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.3</th>
-                                    <td>26.1742</td>
-                                    <td>4.4855</td>
-                                    <td> 0</td>
-                                    <td>0.992</td>
-                                    <td>15.3574</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>7.2895</td>
-                                    <td>38.3382</td>
-                                    <td>7.3631</td>
-                                    <td>0</td>
-                                    <td>0.917507006</td>
-                                    <td>0.467215592</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.1</th>
-                                    <td>1.0533</td>
-                                    <td>36.467</td>
-                                    <td>19.9978</td>
-                                    <td>1.7658</td>
-                                    <td>0</td>
-                                    <td>23.554</td>
-                                    <td>3.3243</td>
-                                    <td>10.099</td>
-                                    <td>3.7387</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.720797709</td>
-                                    <td>0.693614557</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.2</th>
-                                    <td>0</td>
-                                    <td>34.5292</td>
-                                    <td>16.795</td>
-                                    <td>3.5039</td>
-                                    <td>0</td>
-                                    <td>10.0887</td>
-                                    <td>6.8394</td>
-                                    <td>13.9449</td>
-                                    <td>14.2989</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.625072973</td>
-                                    <td>0.779358123</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.3</th>
-                                    <td>0</td>
-                                    <td>31.142</td>
-                                    <td>10.6081</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>32.1433</td>
-                                    <td>6.239</td>
-                                    <td>15.8853</td>
-                                    <td>3.9822</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.683137042</td>
-                                    <td>0.733327847</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.1</th>
-                                    <td>31.7676</td>
-                                    <td>0</td>
-                                    <td>6.8586</td>
-                                    <td>0</td>
-                                    <td>11.5754</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>1.6634</td>
-                                    <td>42.6482</td>
-                                    <td>5.4868</td>
-                                    <td>0</td>
-                                    <td>0.892969</td>
-                                    <td>0.515758</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.2</th>
-                                    <td>32.0994</td>
-                                    <td>0.8944</td>
-                                    <td>2.7405</td>
-                                    <td>0</td>
-                                    <td>10.1716</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>4.9991</td>
-                                    <td>43.1387</td>
-                                    <td>5.9564</td>
-                                    <td>0</td>
-                                    <td>0.927958282</td>
-                                    <td>0.459841189</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.3</th>
-                                    <td>26.1742</td>
-                                    <td>4.4855</td>
-                                    <td> 0</td>
-                                    <td>0.992</td>
-                                    <td>15.3574</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>7.2895</td>
-                                    <td>38.3382</td>
-                                    <td>7.3631</td>
-                                    <td>0</td>
-                                    <td>0.917507006</td>
-                                    <td>0.467215592</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.1</th>
-                                    <td>1.0533</td>
-                                    <td>36.467</td>
-                                    <td>19.9978</td>
-                                    <td>1.7658</td>
-                                    <td>0</td>
-                                    <td>23.554</td>
-                                    <td>3.3243</td>
-                                    <td>10.099</td>
-                                    <td>3.7387</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.720797709</td>
-                                    <td>0.693614557</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.2</th>
-                                    <td>0</td>
-                                    <td>34.5292</td>
-                                    <td>16.795</td>
-                                    <td>3.5039</td>
-                                    <td>0</td>
-                                    <td>10.0887</td>
-                                    <td>6.8394</td>
-                                    <td>13.9449</td>
-                                    <td>14.2989</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.625072973</td>
-                                    <td>0.779358123</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.3</th>
-                                    <td>0</td>
-                                    <td>31.142</td>
-                                    <td>10.6081</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>32.1433</td>
-                                    <td>6.239</td>
-                                    <td>15.8853</td>
-                                    <td>3.9822</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.683137042</td>
-                                    <td>0.733327847</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.1</th>
-                                    <td>31.7676</td>
-                                    <td>0</td>
-                                    <td>6.8586</td>
-                                    <td>0</td>
-                                    <td>11.5754</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>1.6634</td>
-                                    <td>42.6482</td>
-                                    <td>5.4868</td>
-                                    <td>0</td>
-                                    <td>0.892969</td>
-                                    <td>0.515758</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.2</th>
-                                    <td>32.0994</td>
-                                    <td>0.8944</td>
-                                    <td>2.7405</td>
-                                    <td>0</td>
-                                    <td>10.1716</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>4.9991</td>
-                                    <td>43.1387</td>
-                                    <td>5.9564</td>
-                                    <td>0</td>
-                                    <td>0.927958282</td>
-                                    <td>0.459841189</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.3</th>
-                                    <td>26.1742</td>
-                                    <td>4.4855</td>
-                                    <td> 0</td>
-                                    <td>0.992</td>
-                                    <td>15.3574</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>7.2895</td>
-                                    <td>38.3382</td>
-                                    <td>7.3631</td>
-                                    <td>0</td>
-                                    <td>0.917507006</td>
-                                    <td>0.467215592</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.1</th>
-                                    <td>1.0533</td>
-                                    <td>36.467</td>
-                                    <td>19.9978</td>
-                                    <td>1.7658</td>
-                                    <td>0</td>
-                                    <td>23.554</td>
-                                    <td>3.3243</td>
-                                    <td>10.099</td>
-                                    <td>3.7387</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.720797709</td>
-                                    <td>0.693614557</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.2</th>
-                                    <td>0</td>
-                                    <td>34.5292</td>
-                                    <td>16.795</td>
-                                    <td>3.5039</td>
-                                    <td>0</td>
-                                    <td>10.0887</td>
-                                    <td>6.8394</td>
-                                    <td>13.9449</td>
-                                    <td>14.2989</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.625072973</td>
-                                    <td>0.779358123</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.3</th>
-                                    <td>0</td>
-                                    <td>31.142</td>
-                                    <td>10.6081</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>32.1433</td>
-                                    <td>6.239</td>
-                                    <td>15.8853</td>
-                                    <td>3.9822</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.683137042</td>
-                                    <td>0.733327847</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.1</th>
-                                    <td>31.7676</td>
-                                    <td>0</td>
-                                    <td>6.8586</td>
-                                    <td>0</td>
-                                    <td>11.5754</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>1.6634</td>
-                                    <td>42.6482</td>
-                                    <td>5.4868</td>
-                                    <td>0</td>
-                                    <td>0.892969</td>
-                                    <td>0.515758</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.2</th>
-                                    <td>32.0994</td>
-                                    <td>0.8944</td>
-                                    <td>2.7405</td>
-                                    <td>0</td>
-                                    <td>10.1716</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>4.9991</td>
-                                    <td>43.1387</td>
-                                    <td>5.9564</td>
-                                    <td>0</td>
-                                    <td>0.927958282</td>
-                                    <td>0.459841189</td>
-                                </tr>
-                                <tr>
-                                    <th>BM.3</th>
-                                    <td>26.1742</td>
-                                    <td>4.4855</td>
-                                    <td> 0</td>
-                                    <td>0.992</td>
-                                    <td>15.3574</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>7.2895</td>
-                                    <td>38.3382</td>
-                                    <td>7.3631</td>
-                                    <td>0</td>
-                                    <td>0.917507006</td>
-                                    <td>0.467215592</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.1</th>
-                                    <td>1.0533</td>
-                                    <td>36.467</td>
-                                    <td>19.9978</td>
-                                    <td>1.7658</td>
-                                    <td>0</td>
-                                    <td>23.554</td>
-                                    <td>3.3243</td>
-                                    <td>10.099</td>
-                                    <td>3.7387</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.720797709</td>
-                                    <td>0.693614557</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.2</th>
-                                    <td>0</td>
-                                    <td>34.5292</td>
-                                    <td>16.795</td>
-                                    <td>3.5039</td>
-                                    <td>0</td>
-                                    <td>10.0887</td>
-                                    <td>6.8394</td>
-                                    <td>13.9449</td>
-                                    <td>14.2989</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.625072973</td>
-                                    <td>0.779358123</td>
-                                </tr>
-                                <tr>
-                                    <th>EL4.3</th>
-                                    <td>0</td>
-                                    <td>31.142</td>
-                                    <td>10.6081</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>32.1433</td>
-                                    <td>6.239</td>
-                                    <td>15.8853</td>
-                                    <td>3.9822</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>0.683137042</td>
-                                    <td>0.733327847</td>
-                                </tr>
+                                <c:forEach items="${formData}" var="item">
+                                    <tr>
+                                        <c:forEach items="${item}" var="cell">
+                                            <td>${cell.value}</td>
+                                        </c:forEach>
+                                    </tr>
+
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -534,37 +50,43 @@
                             });
                         } );
                     </script>
-                </div>
+                <%--</div>--%>
             </div>
+
+
+        <div class="container-fluid">
+                <label for="resultType" class="control-label ">Download: </label>
+                <c:url var="txtFileLink" value="/download">
+                    <c:param name="path">${txtFile}</c:param>
+                </c:url>
+                <a class="btn btn-warning active" href="${txtFileLink}" download="txt">txt</a>
+
+                <c:url var="csvFileLink" value="/download">
+                    <c:param name="path">${csvFile}</c:param>
+                </c:url>
+                <a class="btn btn-warning active" href="${csvFileLink}" download="csv">csv</a>
+
         </div>
 
-        <div class="form-group">
-            <div class="col-md-2">
-                <label for="resultType" class="col-md-2 control-label ">Download</label>
-            </div>
-            <div class="col-md-10">
-                <button type="submit" class="btn btn-warning active" id="resultType">txt</button>
-                &nbsp;&nbsp;
-                <button type="submit" class="btn btn-warning active" id="resultType">csv</button>
-            </div>
-        </div>
-
-        <div class="form-group">
+        <div class="container-fluid">
             <h2>Result Picture</h2>
-            <div class="col-md-12">
-                <img src="C:/Users/quanlijun/Desktop/web/test.jpeg" class="img-responsive" alt="Responsive image">
+                <c:url var="jpegFileLink" value="/download">
+                    <c:param name="path">${jpegFile}</c:param>
+                </c:url>
+            <div class="text-center">
+                <img src="${jpegFileLink}" style="max-width: 80%" alt="Responsive image">
             </div>
+
         </div>
-        <div class="form-group">
-            <div class="col-md-2">
-                <label for="resultType" class="col-md-2 control-label ">Download:</label>
-            </div>
-            <div class="col-md-10">
-                Download&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="submit" class="btn btn-warning active" id="resultPicType">pdf</button>
-                &nbsp;&nbsp;
-                <button type="submit" class="btn btn-warning active" id="resultPicType">jpeg</button>
-            </div>
+        <div class="container-fluid">
+                <label for="resultType" class="control-label ">Download:</label>
+
+                <c:url var="pdfFileLink" value="/download">
+                    <c:param name="path">${pdfFile}</c:param>
+                </c:url>
+                <a class="btn btn-warning active" href="${pdfFileLink}" download="pdf">pdf</a>
+
+                <a class="btn btn-warning active" href="${jpegFileLink}" download="jpeg">jpeg</a>
         </div>
 
     </div>

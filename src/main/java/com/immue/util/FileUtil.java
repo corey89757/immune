@@ -96,7 +96,7 @@ public class FileUtil {
                 String lineTxt = null;
                 String[] lineTxtArray = null;
                 while ((lineTxt = bufferedReader.readLine()) != null) {
-                    System.out.println(lineTxt);
+//                    System.out.println(lineTxt);
                     lineTxtArray = lineTxt.split("\\s");
                     if (titleList.size() == 1) {//获取标题的值
                         for (String title : lineTxtArray) {

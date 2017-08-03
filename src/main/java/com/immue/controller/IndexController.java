@@ -30,21 +30,31 @@ public class IndexController extends Controller {
         String workHome = RUtil.configHome + File.separator + "output" + File.separator + pId;
 
         String txtFile = workHome + File.separator + "result.svr" + ".txt";
-        String csvFile = workHome + File.separator + "result.svr" + ".csv";
-        String jpegFile = workHome + File.separator + "Bar plot of resultusingsvr" + ".jpeg";
-        String pdfFile = workHome + File.separator + "Bar plot of resultusingsvr" + ".pdf";
+        String csvFile = pId + File.separator + "result.svr" + ".csv";
+        String jpegFile = pId + File.separator + "Bar plot of resultusingsvr" + ".jpeg";
+        String pdfFile = pId + File.separator + "Bar plot of resultusingsvr" + ".pdf";
 
         System.out.println("[result] txtFile : " + txtFile +
                 "\ncsvFile : " + csvFile +
                 "\njpegFile : " + jpegFile +
                 "\npdfFile : " + pdfFile);
         JSONArray formData = FileUtil.readTxtFileToJSONArray(txtFile);
+        txtFile = pId + File.separator + "result.svr" + ".txt";
         System.out.println(formData);
         setAttr("formData", formData);
+        setAttr("txtFile", txtFile);
         setAttr("csvFile", csvFile);
         setAttr("jpegFile", jpegFile);
         setAttr("pdfFile", pdfFile);
         renderJsp("result.jsp");
+    }
+
+
+    public void download() {
+        String path = getPara("path");
+        String filePath = RUtil.configHome + File.separator + "output" + File.separator + path;
+        File file = new File(filePath);
+        renderFile(file);
     }
 
     public void manual() {
