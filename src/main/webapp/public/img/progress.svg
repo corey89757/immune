@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:h="http://www.w3.org/1999/xlink" width="70" height="70" viewBox="0 0 140 140">
+    <linearGradient id="i">
+        <stop stop-color="#fff"/>
+        <stop offset="1"/>
+    </linearGradient>
+    <mask id="m">
+        <circle r="66" fill="url(#i)" id="c"/>
+    </mask>
+    <g style="mask:url(#m)" transform="translate(66 66)">
+        <g id="f">
+            <circle r="6" cx="60" id="x"/>
+            <use h:href="#x" transform="rotate(30)"/>
+            <use h:href="#x" transform="rotate(30)"/>
+            <use h:href="#x" transform="rotate(60)"/>
+            <use h:href="#x" transform="rotate(90)"/>
+        </g><use h:href="#f" transform="rotate(90)"/>
+        <use h:href="#f" transform="rotate(180)"/>
+        <use h:href="#f" transform="rotate(270)"/>
+    </g><animateTransform attributeName="transform" type="rotate" to="360" dur="4" repeatCount="indefinite" h:href="#c"/>
+</svg>

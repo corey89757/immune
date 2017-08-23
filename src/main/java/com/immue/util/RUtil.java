@@ -12,6 +12,8 @@ public class RUtil {
 
     public static String configHome = System.getenv("immune_home");
     private static String RHome = System.getenv("R_HOME");
+    //public static String configHome = "/home/quanlj/immune";
+    //private static String RHome = "/home/quanlj/local/R";
 
     public static void doRImmune (String type, String subType, String method, String pId) {
 
@@ -19,6 +21,7 @@ public class RUtil {
         // R文件全路径
         String immuneRScriptFile = immuneRScriptDir + File.separator + "main.R";
         String RScriptPath = RHome + File.separator + "bin" + File.separator + "Rscript.exe";
+        //String RScriptPath = RHome + File.separator + "bin" + File.separator + "Rscript";
         String workHome = configHome + File.separator + "output" + File.separator + pId;
         String inputFile = workHome + File.separator + "qxf.array.expression.csv";
         String outputName = "result";

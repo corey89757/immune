@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class FileUtil {
 
 
     private static String configHome = System.getenv("immune_home");
+    //private static String configHome = "/home/quanlj/immune";
 
     public static String makeFilePath(String jobName) {
         //String fileName = jobName + "_" + UUID.randomUUID().toString().replaceAll("-", "");
@@ -106,8 +108,14 @@ public class FileUtil {
                     }
                     //非标题列
                     JSONObject resultItem = new JSONObject();
-                    for (int i = 0, totalCount = lineTxtArray.length; i < totalCount; i++) {
-                        resultItem.put(titleList.get(i), lineTxtArray[i]);
+                    //for (int i = 0, totalCount = lineTxtArray.length; i < totalCount; i++) {
+                        //resultItem.put(titleList.get(i), lineTxtArray[i]);
+                    //}
+                    resultItem.put(titleList.get(0), lineTxtArray[0]);
+                    java.text.DecimalFormat decimalFormat = new DecimalFormat("0.00");
+                    for (int i = 1, totalCount = lineTxtArray.length; i < totalCount; i++) {
+                        float tempValue = Float.parseFloat(lineTxtArray[i]);
+                        resultItem.put(titleList.get(i), decimalFormat.format(tempValue));
                     }
                     result.add(resultItem);
                 }

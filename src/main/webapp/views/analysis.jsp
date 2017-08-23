@@ -84,6 +84,7 @@
                     <p>The emaile account to reveive the calculated result.</p>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="col-sm-2 control-label">Job Name</label>
                 <div class="col-sm-4">

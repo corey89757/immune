@@ -7,8 +7,7 @@ import com.jfinal.upload.UploadFile;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.UUID;
 
 public class IndexController extends Controller {
@@ -17,12 +16,22 @@ public class IndexController extends Controller {
         renderJsp("index.jsp");
     }
 
-    public void analysis() {
-        System.out.printf("analysis...........");
-        renderJsp("analysis.jsp");
+    //public void analysis() {
+    //    System.out.printf("analysis...........");
+    //    renderJsp("analysis.jsp");
+    //}
+
+    public void contact() {
+        System.out.printf("contact...........");
+        renderJsp("contact.jsp");
     }
 
-    public void result() {
+    public void manual() {
+        System.out.printf("manual...........");
+        renderJsp("manual.jsp");
+    }
+
+    public void result() throws IOException {
         System.out.printf("result...........");
         String pId = getPara("pId");
         System.out.println("[result] pId : " + pId);
@@ -36,17 +45,16 @@ public class IndexController extends Controller {
         String jpegFile = null;
         String pdfFile = null;
 
-        if (method.equals("SVR")){
-            txtFile = workHome + File.separator + "result.svr" + ".txt";
-            csvFile = pId + File.separator + "result.svr" + ".csv";
-            jpegFile = pId + File.separator + "Bar plot of resultusingsvr" + ".jpeg";
-            pdfFile = pId + File.separator + "Bar plot of resultusingsvr" + ".pdf";
-        }
-        else if (method.equals("LLSR")){
-            txtFile = workHome + File.separator + "result.llsr" + ".txt";
-            csvFile = pId + File.separator + "result.llsr" + ".csv";
-            jpegFile = pId + File.separator + "Bar plot of resultusingllsr" + ".jpeg";
-            pdfFile = pId + File.separator + "Bar plot of resultusingllsr" + ".pdf";
+        if (method.equals("SVR")) {
+            txtFile = workHome + File.separator + "result.SVR" + ".txt";
+            csvFile = pId + File.separator + "result.SVR" + ".csv";
+            jpegFile = pId + File.separator + "Bar plot of resultusingSVR" + ".jpeg";
+            pdfFile = pId + File.separator + "Bar plot of resultusingSVR" + ".pdf";
+        } else if (method.equals("LLSR")) {
+            txtFile = workHome + File.separator + "result.LLSR" + ".txt";
+            csvFile = pId + File.separator + "result.LLSR" + ".csv";
+            jpegFile = pId + File.separator + "Bar plot of resultusingLLSR" + ".jpeg";
+            pdfFile = pId + File.separator + "Bar plot of resultusingLLSR" + ".pdf";
         }
 
         System.out.println("[result] txtFile : " + txtFile +
@@ -55,17 +63,42 @@ public class IndexController extends Controller {
                 "\npdfFile : " + pdfFile);
         JSONArray formData = FileUtil.readTxtFileToJSONArray(txtFile);
         if (method.equals("SVR")) {
-            txtFile = pId + File.separator + "result.svr" + ".txt";
-        }else if(method.equals("LLSR")){
-            txtFile = pId + File.separator + "result.llsr" + ".txt";
+            txtFile = pId + File.separator + "result.SVR" + ".txt";
+        } else if (method.equals("LLSR")) {
+            txtFile = pId + File.separator + "result.LLSR" + ".txt";
         }
-        System.out.println(formData);
+
         setAttr("formData", formData);
         setAttr("txtFile", txtFile);
         setAttr("csvFile", csvFile);
         setAttr("jpegFile", jpegFile);
         setAttr("pdfFile", pdfFile);
-        renderJsp("result.jsp");
+
+        String errorFile = RUtil.configHome + File.separator + "output" + File.separator + pId + File.separator + "result.err";
+        File errTxt = new File(errorFile);
+
+        String testFile = RUtil.configHome + File.separator + "output" + File.separator + txtFile;
+        File testTxt = new File(testFile);
+        if (errTxt.isFile() && errTxt.exists()) { //判断文件是否存在
+            String encoding = "GBK";
+            InputStreamReader read = new InputStreamReader(new FileInputStream(errTxt), encoding);//考虑到编码格式
+            BufferedReader bufferedReader = new BufferedReader(read);
+            String lineTxt = null;
+            String allTxt = "";
+            while ((lineTxt = bufferedReader.readLine()) != null) {
+                allTxt += lineTxt;
+            }
+            read.close();
+            setAttr("errFile", allTxt);
+            renderJsp("errorpage.jsp");
+        } else if (testTxt.isFile() && testTxt.exists()) {
+            renderJsp("result.jsp");
+        } else {
+            String allTxt = "There are some errors in input file";
+            setAttr("errFile", allTxt);
+            renderJsp("errorpage.jsp");
+        }
+
     }
 
 
@@ -75,12 +108,6 @@ public class IndexController extends Controller {
         File file = new File(filePath);
         renderFile(file);
     }
-
-    public void manual() {
-        System.out.printf("manual...........");
-        renderJsp("manual.jsp");
-    }
-
 
     public void process() throws IOException, InterruptedException {
         try {
@@ -95,13 +122,15 @@ public class IndexController extends Controller {
         String subType = getPara("subType");
         String method = getPara("method");
         String jobName = getPara("jobName");
+        String species = getPara("species");
         File file = uploadFile.getFile();
 
         System.out.println("[process] type : " + type
                 + "\nsunType : " + subType
                 + "\nmethod : " + method
                 + "\njobName : " + jobName
-                + "\nfile : " + file.getName());
+                + "\nfile : " + file.getName()
+                + "\nspecies : " + species);
 
         //保存文件到immue_home/[jobName+UUID]/jobName+UUID,后期R语言的输出结果也可以保存在immue_home/[jobName+UUID] 文件夹中
 
