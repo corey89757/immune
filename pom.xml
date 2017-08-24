@@ -40,6 +40,7 @@
         <main.basedir>${basedir}</main.basedir>
         <maven-copy-plugin.version>0.2.5</maven-copy-plugin.version>
         <rjava.version>0.9-7</rjava.version>
+        <mail.version>1.4</mail.version>
     </properties>
 
     <dependencies>
@@ -317,7 +318,11 @@
             <version>${rjava.version}</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${mail.version}</version>
+        </dependency>
 
     </dependencies>
 
