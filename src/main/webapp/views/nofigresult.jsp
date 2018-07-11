@@ -33,11 +33,11 @@
                 <div class="row-fluid">
                     <!--<div style="position:absolute; height:150px; overflow:auto"></div>   overflow-y:hidden-->
                     <div class="table-responsive"><!--row pre-scrollable-->
-                        <table class="table table-striped table-bordered table-hover table-condensed datatable">
+                        <table class="table  table-striped table-bordered table-hover table-condensed datatable">
                             <thead>
-                            <tr style="white-space: nowrap">
+                            <tr>
                                 <c:forEach items="${formData[0]}" var="cell">
-                                    <th>${cell.key}&nbsp&nbsp</th>
+                                    <th>${cell.key}</th>
                                 </c:forEach>
                             </tr>
                             </thead>
@@ -64,26 +64,6 @@
                     } );
                 </script>
                 <%--</div>--%>
-        </div>
-
-        <div class="container-fluid">
-            <h3 class="bg-info" style="text-align:center">Figure: predicted immune cell compositions</h3>
-            <label for="resultType" class="control-label ">Download:</label>
-            <c:url var="pdfFileLink" value="/download">
-                <c:param name="path">${pdfFile}</c:param>
-            </c:url>
-            <a class="btn btn-warning active" href="${pdfFileLink}" download="pdf">pdf</a>
-
-            <a class="btn btn-warning active" href="${jpegFileLink}" download="jpeg">jpeg</a>
-        </div>
-
-        <div class="container-fluid">
-            <c:url var="jpegFileLink" value="/download">
-                <c:param name="path">${jpegFile}</c:param>
-            </c:url>
-            <div class="text-center">
-                <img src="${jpegFileLink}" style="max-width: 50%" alt="Responsive image">
-            </div>
         </div>
     </div>
 </div>

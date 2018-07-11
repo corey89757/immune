@@ -4,24 +4,27 @@ import org.rosuda.JRI.REXP;
 import org.rosuda.JRI.RList;
 import org.rosuda.JRI.RVector;
 import org.rosuda.JRI.Rengine;
+import com.immue.util.CountVisitor;
 
 import java.io.*;
 import java.util.Arrays;
 
 public class RUtil {
 
-    public static String configHome = System.getenv("immune_home");
-    private static String RHome = System.getenv("R_HOME");
-    //public static String configHome = "/home/quanlj/immune";
-    //private static String RHome = "/home/quanlj/local/R";
+    //public static String configHome = System.getenv("immune_home");
+    //private static String RHome = System.getenv("R_HOME");
+    public static String configHome = "/home/quanlj/immune";
+    private static String RHome = "/home/quanlj/local/R";
+    private static int runCount= 0;
 
     public static void doRImmune (String type, String subType, String method, String pId) {
 
         String immuneRScriptDir = configHome + File.separator + "Rscript";
+        String addRunCountFile = configHome + File.separator + "visitorInfo"+ File.separator +"runCount.txt";
         // R文件全路径
         String immuneRScriptFile = immuneRScriptDir + File.separator + "main.R";
-        String RScriptPath = RHome + File.separator + "bin" + File.separator + "Rscript.exe";
-        //String RScriptPath = RHome + File.separator + "bin" + File.separator + "Rscript";
+        //String RScriptPath = RHome + File.separator + "bin" + File.separator + "Rscript.exe";
+        String RScriptPath = RHome + File.separator + "bin" + File.separator + "Rscript";
         String workHome = configHome + File.separator + "output" + File.separator + pId;
         String inputFile = workHome + File.separator + "qxf.array.expression.csv";
         String outputName = "result";
@@ -54,7 +57,19 @@ public class RUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.err.println("R文件执行完毕");
+        System.out.println("R文件执行完毕");
+
+        //运行成功runCount+1
+        CountVisitor CountFileHandler=new CountVisitor();//创建对象
+        int count = 0;
+        if(runCount==0){
+            count=CountFileHandler.readFile(addRunCountFile); //读取文件获取数据赋给count
+            runCount = count;
+        }
+        count=runCount;
+        ++count;
+        runCount = count;
+        CountFileHandler.writeFile(addRunCountFile,count);//更新文件记录
     }
 
     private static void printMessage(final InputStream input) {

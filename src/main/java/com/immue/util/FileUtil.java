@@ -11,15 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by jian.wu on 7/31/17.
+ * Created by lijun.quan on 7/31/17.
  */
 public class FileUtil {
 
     protected final static Logger logger = Logger.getLogger(FileUtil.class);
 
 
-    private static String configHome = System.getenv("immune_home");
-    //private static String configHome = "/home/quanlj/immune";
+    //private static String configHome = System.getenv("immune_home");
+    private static String configHome = "/home/quanlj/immune";
 
     public static String makeFilePath(String jobName) {
         //String fileName = jobName + "_" + UUID.randomUUID().toString().replaceAll("-", "");
@@ -101,9 +101,22 @@ public class FileUtil {
 //                    System.out.println(lineTxt);
                     lineTxtArray = lineTxt.split("\\s");
                     if (titleList.size() == 1) {//获取标题的值
-                        for (String title : lineTxtArray) {
-                            titleList.add(title);
-                        }
+                        titleList.add("B Cells" );
+                        titleList.add("CD4 T Cells");
+                        titleList.add("CD8 T Cells");
+                        titleList.add("Dendritic Cells");
+                        titleList.add("Eosinophils");
+                        titleList.add("Macrophages");
+                        titleList.add("Mast Cells");
+                        titleList.add("Monocytes");
+                        titleList.add("Neutrophils");
+                        titleList.add("NK Cells");
+                        titleList.add("P value");
+                        titleList.add("Correlation");
+                        titleList.add("RMSE");
+                        //for (String title : lineTxtArray) {
+                            //titleList.add(title);
+                        //}
                         continue;
                     }
                     //非标题列

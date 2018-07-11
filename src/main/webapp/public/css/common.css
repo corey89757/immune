@@ -8,7 +8,7 @@ html, body {
     padding: 0;
     height: 100%;
     font: 16px/1.5 "微软雅黑", "sans-serif";
-    /*overflow-x: hidden;*/
+    overflow-x: hidden;
     background: -ms-linear-gradient(top, #bad7e6,  #d0dae6);        /* IE 10 */
     background:-moz-linear-gradient(top,#bad7e6,#d0dae6);/*火狐*/
     background:-webkit-gradient(linear, 0% 0%, 0% 100%,from(#bad7e6), to(#d0dae6));/*谷歌*/

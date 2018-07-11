@@ -40,11 +40,11 @@
 
                 <address>
                     <strong>Prof F.xiaofeng Qin</strong><br>
-                    Email: <a href="mailto:#">sjz@ism.cams.cn</a><br>
-                    <a href="http://www.ismsz.cn/Index/EPage/98169fc1-0d89-4e02-b356-a099af3e0565" style="color: #6897bb" target="_blank">Frank Xiaofeng Qin's Lab</a>
+                    Email: <a href="mailto:#">fqin1@foxmail.com</a><br>
+                    <a href="http://www.ismsz.cn/Index/EPage/e69855fd-f7f3-4e74-9547-995c7845076e" style="color: #6897bb" target="_blank">Frank Xiaofeng Qin's Lab</a>
                 </address>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" style="padding-top: 15px">
                 <div id="allmap"></div>
             </div>
         </div>
