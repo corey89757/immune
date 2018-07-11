@@ -1,12 +1,12 @@
 package com.immue.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.immue.util.FileUtil;
 import com.immue.util.RUtil;
 import com.immue.util.SentEmail;
 import com.jfinal.core.Controller;
 import com.jfinal.upload.UploadFile;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import java.io.*;
 import java.util.UUID;
@@ -37,7 +37,7 @@ public class IndexController extends Controller {
         System.out.printf("result...........\n");
         String jobName = getPara("jobName");
         System.out.println("[result] jobName : " + jobName);
-        String pId = jobName+getPara("pId");
+        String pId = jobName + getPara("pId");
         System.out.println("[result] pId : " + pId);
         String method = getPara("method");
         System.out.println("[result] method : " + method);
@@ -79,7 +79,7 @@ public class IndexController extends Controller {
         setAttr("jpegFile", jpegFile);
         setAttr("pdfFile", pdfFile);
         setAttr("jobName", jobName);
-        setAttr("pId",pId);
+        setAttr("pId", pId);
 
         String errorFile = RUtil.configHome + File.separator + "output" + File.separator + pId + File.separator + "result.err";
         File errTxt = new File(errorFile);
@@ -103,8 +103,7 @@ public class IndexController extends Controller {
             File figTxt = new File(figFile);
             if (figTxt.isFile() && figTxt.exists()) {
                 renderJsp("result.jsp");
-            }
-            else {
+            } else {
                 renderJsp("nofigresult.jsp");
             }
         } else {
@@ -140,9 +139,8 @@ public class IndexController extends Controller {
         String replyEmail = getPara("replyEmail");
         File file = uploadFile.getFile();
 
-        if(jobName.equals(""))
-        {
-            jobName="yourImmuCC";
+        if (jobName.equals("")) {
+            jobName = "yourImmuCC";
         }
 
         System.out.println("[process] type : " + type
@@ -151,7 +149,7 @@ public class IndexController extends Controller {
                 + "\njobName : " + jobName
                 + "\nfile : " + file.getName()
                 + "\nspecies : " + species
-                + "\nreplyEmail: "+ replyEmail);
+                + "\nreplyEmail: " + replyEmail);
 
         //保存文件到immue_home/[jobName+UUID]/jobName+UUID,后期R语言的输出结果也可以保存在immue_home/[jobName+UUID] 文件夹中
 
@@ -171,7 +169,7 @@ public class IndexController extends Controller {
         }
 
         //发送邮件
-        SentEmail.confirmationEmail(replyEmail,method,pId, jobName);
+        SentEmail.confirmationEmail(replyEmail, method, pId, jobName);
         //处理
         //RUtil.callRMethod();
         RUtil.doRImmune(type, subType, method, jobName + pId);

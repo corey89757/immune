@@ -1,7 +1,7 @@
 package com.immue.util;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.log4j.Logger;
 
 import java.io.*;
@@ -101,7 +101,7 @@ public class FileUtil {
 //                    System.out.println(lineTxt);
                     lineTxtArray = lineTxt.split("\\s");
                     if (titleList.size() == 1) {//获取标题的值
-                        titleList.add("B Cells" );
+                        titleList.add("B Cells");
                         titleList.add("CD4 T Cells");
                         titleList.add("CD8 T Cells");
                         titleList.add("Dendritic Cells");
@@ -115,14 +115,14 @@ public class FileUtil {
                         titleList.add("Correlation");
                         titleList.add("RMSE");
                         //for (String title : lineTxtArray) {
-                            //titleList.add(title);
+                        //titleList.add(title);
                         //}
                         continue;
                     }
                     //非标题列
                     JSONObject resultItem = new JSONObject();
                     //for (int i = 0, totalCount = lineTxtArray.length; i < totalCount; i++) {
-                        //resultItem.put(titleList.get(i), lineTxtArray[i]);
+                    //resultItem.put(titleList.get(i), lineTxtArray[i]);
                     //}
                     resultItem.put(titleList.get(0), lineTxtArray[0]);
                     java.text.DecimalFormat decimalFormat = new DecimalFormat("0.00");
