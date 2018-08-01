@@ -244,13 +244,19 @@ public class CountryNameUtil {
         if (map.containsKey(zhName)) {
             return map.get(zhName);
         } else {
-            System.out.printf("cann't find the english name for : " + zhName);
+            System.out.println("cann't find the english name for : " + zhName);
+            for (String key : map.keySet()) {
+                if (key.indexOf(zhName) > -1) {
+                    return map.get(key);
+                }
+            }
             return zhName;
         }
     }
 
     public static void main(String[] args) {
         System.out.println(CountryNameUtil.getCountryEnName("中国"));
+        System.out.println(CountryNameUtil.getCountryEnName("阿拉伯"));
     }
 
 }
